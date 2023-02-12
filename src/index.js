@@ -9,7 +9,7 @@ const App = () => {
   const [featuredResult, setFeaturedResult] = useState({});
     return <>
     <Greeting ></Greeting>
-    <SearchBar setSearchResults = {setSearchResults}></SearchBar>
+    <SearchBar setSearchResults = {setSearchResults} setFeaturedResult = {setFeaturedResult}></SearchBar>
     <Feature featuredResult = {featuredResult}></Feature>
     <SearchResults searchResults = {searchResults} featuredResult = {featuredResult} setFeaturedResult = {setFeaturedResult}></SearchResults>
     

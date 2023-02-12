@@ -28,10 +28,11 @@ const Feature = (props) => {
                  <span className="content">{featuredResult.medium}</span> </React.Fragment>: null }
                  {featuredResult.dimensions ? <React.Fragment><span className="title">Dimensions</span>
                  <span className="content">{featuredResult.dimensions}</span> </React.Fragment>: null }
-                 {featuredResult.people ? <React.Fragment><span className="title">Artist Profile</span>
+                 {featuredResult.people ? <React.Fragment><span className="title">Important People</span>
                  {/* vvv I would enjoy some feedback on the approach I took on the following two lines vvv */}
-                 <span className="content"> {featuredResult.people.map((key) => {return Object.entries(key).map((value, index) => {
-                  return <span key = {index}>{value[0]}: {value[1]} </span>})})}</span> </React.Fragment> : null}
+                 <span className="Profile"> {featuredResult.people.map((key) => {return <div className='indie-artist'> { Object.entries(key).map((value, index) => {
+                  let entryTitle = value[0] ? `${value[0].charAt(0).toUpperCase()}${value[0].slice(1)}` : null ;
+                  return <span className = "profile-entry" key = {index}>{entryTitle ? entryTitle : null }: {value[1] ? value[1] : "Info Unavailable"} </span>})}</div>})}</span> </React.Fragment> : null}
                  {featuredResult.department ? <React.Fragment><span className="title">Department</span>
                  <span className="content">{featuredResult.department}</span> </React.Fragment>: null }
                  {featuredResult.division ? <React.Fragment><span className="title">Division</span>

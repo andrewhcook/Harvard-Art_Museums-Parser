@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { fetchQueryResults, fetchAllCenturies, fetchAllClassifications} from '../api/requests';
 
 const SearchBar = (props) => {
-    const {setSearchResults} = props;
+    const {setSearchResults, setFeaturedResult} = props;
 
     const [centuryList, setCenturyList] = useState([]);
     const [classificationList, setClassificationList] = useState([]);
     const [queryString, setQueryString] = useState('');
     const [century, setCentury] = useState('any');
     const [classification, setClassification] = useState('any');
+
     const onSubmitHandler = async ()=> {
             
             try {
@@ -27,7 +28,6 @@ const SearchBar = (props) => {
     try {
       
      await Promise.all([fetchAllCenturies()]).then((values) => {
-      console.log(values[0]);
       let myList= [];
       for (let i in values[0]) {
         console.log("name of century", values[0][i].name);
@@ -94,6 +94,12 @@ const SearchBar = (props) => {
      </fieldset>
 
         <button className="submit-form" type = "submit" value = "Submit">Submit</button>
+        <button onClick={(event)=> {
+          event.preventDefault();
+          setSearchResults([]);
+          setFeaturedResult({});
+          setQueryString("");
+    }}>Reset</button>
             
             </form></>
 }
